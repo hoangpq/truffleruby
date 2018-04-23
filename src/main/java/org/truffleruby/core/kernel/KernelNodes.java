@@ -1421,7 +1421,7 @@ public abstract class KernelNodes {
         private String dirname(String path) {
             final int lastSlash = path.lastIndexOf(File.separatorChar);
             if (lastSlash == -1) {
-                return path;
+                return getContext().send(getContext().getCoreLibrary().getDirClass(), "getwd").toString();
             } else {
                 return path.substring(0, lastSlash);
             }
